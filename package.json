@@ -1,0 +1,25 @@
+{
+  "name": "canvas-play-breakout",
+  "version": "1.0.0",
+  "description": "Goofballin' around with canvas and 2D game dev",
+  "main": "index.js",
+  "scripts": {
+    "dev": "parcel src/index.html -p 8080",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/phillipluther/canvas-play-breakout.git"
+  },
+  "keywords": [],
+  "author": "Phillip Luther <dev@phillipluther.com",
+  "license": "UNLICENSED",
+  "private": true,
+  "bugs": {
+    "url": "https://github.com/phillipluther/canvas-play-breakout/issues"
+  },
+  "homepage": "https://github.com/phillipluther/canvas-play-breakout#readme",
+  "devDependencies": {
+    "parcel-bundler": "^1.10.3"
+  }
+}
