@@ -33,13 +33,6 @@ export default class Paddle {
         });
     }
 
-    getPosition() {
-        return {
-            x: this.x,
-            y: this.y
-        };
-    }
-
     draw() {
         let {canvas, context, x, y, speed, movingLeft, movingRight, width, height} = this;
         let newX = x;
@@ -53,7 +46,7 @@ export default class Paddle {
             newX = (x + speed < maxX) ? x + speed : maxX;
         }
 
-        context.beginPath()
+        context.beginPath();
         context.rect(newX, y, width, height);
         context.fillStyle = '#f90';
         context.fill();

@@ -18,52 +18,24 @@ export default class Ball {
         this.movingDown = false;
     }
 
-    getPosition() {
+    getNextPosition() {
+        let {movingRight, movingDown, speed, x, y} = this;
+        let nextX = movingRight ? x + speed : x - speed;
+        let nextY = movingDown ? y + speed : y - speed;
+
         return {
-            x: this.x,
-            y: this.y
+            x: nextX,
+            y: nextY
         };
     }
 
-    setXDirection() {
-        let {canvas, x, movingRight, radius, speed} = this;
-        this.movingRight = movingRight ?
-            ((x + speed) < (canvas.width - radius)) :
-            ((x - speed) < radius);
-    }
-
-    setYDirection() {
-        let {canvas, y, movingDown, radius, speed} = this;
-        this.movingDown = movingDown ?
-            ((y + speed) < (canvas.height - radius)) :
-            ((y - speed) < radius);
-    }
-
     draw() {
-        let {canvas, context, movingDown, movingRight, x, y, radius, speed} = this;
-
-        this.setXDirection();
-        this.setYDirection();
-
-        // get our new position
-        let newX = movingRight ? x + speed : x - speed;
-        let newY = movingDown ? y + speed : y - speed;
+        let {context, x, y, radius} = this;
 
         context.beginPath();
-        context.arc(newX, newY, radius, 0, Math.PI * 2);
+        context.arc(x, y, radius, 0, Math.PI * 2);
         context.fillStyle = '#f90';
         context.fill();
         context.closePath();
-
-        this.x = newX;
-        this.y = newY;
-    }
-
-    moveRight(isMovingRight = true) {
-        this.movingRight = isMovingRight;
-    }
-
-    moveDown(isMovingDown = true) {
-        this.movingDown = isMovingDown;
     }
 }

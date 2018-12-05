@@ -8,13 +8,13 @@ export default class Bricks {
         // spacing between invidual bricks
         this.brickPad = 10;
 
-        this.brickHeight = 20
+        this.brickHeight = 20;
 
         this.layout = this.createLayout(cols, rows);
     }
 
     createLayout(cols, rows) {
-        let {canvas, offset, brickPad, brickHeight} = this;
+        let {offset, brickPad, brickHeight} = this;
 
         let usableSpace = this.canvas.width - (offset * 2) - (cols * brickPad);
         let brickWidth = Math.floor(usableSpace / cols);

@@ -7,68 +7,35 @@ const canvas = document.getElementById('canvas');
 const ctx = canvas.getContext('2d');
 
 let gameLoop;
-let isPaused = false;
 
 let ball = new Ball(canvas);
 let paddle = new Paddle(canvas);
 let bricks = new Bricks(canvas, 4, 2);
+
+// function ballDropped() {
+//     let {movingDown: ballIsFalling, x: ballX, y: ballY} = ball;
+//     let {x: paddleX, y: paddleY, width: paddleWidth} = paddle;
+//     let ballOnBottom = ballIsFalling && (ballY > paddleY);
+//
+//     return (ballOnBottom && ((ballX < paddleX) || (ballX > paddleX + paddleWidth)));
+// }
 
 function draw() {
     gameLoop = window.requestAnimationFrame(draw);
 
     ctx.clearRect(0, 0, canvas.width, canvas.height);
 
+    // game over conditions
+    // if (ballDropped()) {
+    //     // do some notice here
+    //     window.cancelAnimationFrame(gameLoop);
+    //     return;
+    // }
+
     ball.draw();
     paddle.draw();
     bricks.draw();
-
-    // ballX += deltaX;
-    // ballY += deltaY;
-    //
-    // if ((ballX + deltaX < ballRadius) || (ballX + deltaX > canvas.width - ballRadius)) {
-    //     deltaX = -deltaX;
-    // }
-    //
-    // if (ballY + deltaY < ballRadius) {
-    //     deltaY = -deltaY;
-    //
-    // } else if (ballY + deltaY > canvas.height + ballRadius) {
-    //     if ((ballX > paddleX) && (ballX < paddleX + paddleWidth)) {
-    //         deltaY = -deltaY;
-    //
-    //     } else {
-    //         // clearInterval(gameLoop);
-    //         window.cancelAnimationFrame(gameLoop);
-    //         alert('Game over!');
-    //         document.location.reload();
-    //     }
-    // }
-    //
-    // if (movingRight && (paddleX < canvas.width - paddleWidth)) {
-    //     paddleX += 7;
-    // }
-    //
-    // if (movingLeft && (paddleX > 0)) {
-    //     paddleX -= 7;
-    // }
 }
 
-// window.addEventListener('keydown', handleKeyDown);
-// window.addEventListener('keyup', handleKeyUp);
-
-// gameLoop = setInterval(draw, 16);
-canvas.focus();
-
-window.addEventListener('blur', () => {
-    isPaused = true;
-    window.cancelAnimationFrame(gameLoop);
-});
-
-window.addEventListener('focus', () => {
-    if (isPaused) {
-        canvas.focus();
-        draw();
-    }
-});
-
+canvas.addEventListener('focus', () =>  console.log('FOCUS!'));
 draw();
