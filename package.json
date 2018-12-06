@@ -4,7 +4,7 @@
   "description": "Goofballin' around with canvas and 2D game dev",
   "main": "index.js",
   "scripts": {
-    "build": "parcel build src/index.html --out-dir docs",
+    "build": "parcel build src/index.html --out-dir demo",
     "dev": "parcel src/index.html -p 8080",
     "lint": "eslint src",
     "test": "echo \"Error: no test specified\" && exit 1"
