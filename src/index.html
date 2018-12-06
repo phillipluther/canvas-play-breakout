@@ -7,7 +7,17 @@
     </head>
 
     <body>
-        <canvas id="canvas" width="640" height="320"></canvas>
+        <canvas id="canvas"></canvas>
+
+        <script>
+            let canvas = document.getElementById('canvas');
+            let {innerHeight, innerWidth} = window;
+            let canvasSize = (innerWidth > innerHeight) ? innerHeight : innerWidth;
+
+            console.log('Canvas size!', canvasSize);
+            canvas.setAttribute('width', canvasSize);
+            canvas.setAttribute('height', canvasSize);
+        </script>
         <script src="main.js"></script>
     </body>
 </html>

@@ -3,12 +3,12 @@ export default class Paddle {
         this.canvas = canvas;
         this.context = canvas.getContext('2d');
 
-        this.speed = 3;
+        this.speed = 8;
 
         // paddle sizing/placement
-        this.width = 75;
-        this.height = 10;
-        this.offset = 10;
+        this.width = 100;
+        this.height = 15;
+        this.offset = 30;
 
         this.x = (canvas.width - this.width) / 2;
         this.y = (canvas.height - this.height - this.offset);

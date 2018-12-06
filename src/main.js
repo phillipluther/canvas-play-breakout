@@ -1,4 +1,4 @@
-import Ball from './Ball';
+import {Ball, handleCollisions} from './Ball';
 import Paddle from './Paddle';
 import Bricks from './Bricks';
 
@@ -10,32 +10,24 @@ let gameLoop;
 
 let ball = new Ball(canvas);
 let paddle = new Paddle(canvas);
-let bricks = new Bricks(canvas, 4, 2);
-
-// function ballDropped() {
-//     let {movingDown: ballIsFalling, x: ballX, y: ballY} = ball;
-//     let {x: paddleX, y: paddleY, width: paddleWidth} = paddle;
-//     let ballOnBottom = ballIsFalling && (ballY > paddleY);
-//
-//     return (ballOnBottom && ((ballX < paddleX) || (ballX > paddleX + paddleWidth)));
-// }
+let bricks = new Bricks(canvas, 8, 5);
 
 function draw() {
     gameLoop = window.requestAnimationFrame(draw);
 
     ctx.clearRect(0, 0, canvas.width, canvas.height);
 
-    // game over conditions
-    // if (ballDropped()) {
-    //     // do some notice here
-    //     window.cancelAnimationFrame(gameLoop);
-    //     return;
-    // }
-
     ball.draw();
     paddle.draw();
     bricks.draw();
+
+    handleCollisions(ball, paddle, bricks);
+
+    if (ball.y > canvas.height + ball.radius) {
+        window.cancelAnimationFrame(gameLoop);
+        alert('Game over!');
+        window.location.reload();
+    }
 }
 
-canvas.addEventListener('focus', () =>  console.log('FOCUS!'));
 draw();

@@ -6,7 +6,7 @@ export default class Bricks {
         // spacing around the grid of bricks
         this.offset = 40;
         // spacing between invidual bricks
-        this.brickPad = 10;
+        this.brickPad = 5;
 
         this.brickHeight = 20;
 

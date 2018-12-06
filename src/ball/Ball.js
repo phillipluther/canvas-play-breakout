@@ -7,29 +7,28 @@ export default class Ball {
         this.radius = 10;
 
         // how quickly the ball travels
-        this.speed = 3;
+        this.speed = 6;
 
         // starting position of the ball
         this.x = canvas.width / 2;
-        this.y = canvas.height - 30;
+        this.y = canvas.height - 50;
 
         // starting direction of the ball
         this.movingRight = true;
         this.movingDown = false;
     }
 
-    getNextPosition() {
+    setNextPosition() {
         let {movingRight, movingDown, speed, x, y} = this;
         let nextX = movingRight ? x + speed : x - speed;
         let nextY = movingDown ? y + speed : y - speed;
 
-        return {
-            x: nextX,
-            y: nextY
-        };
+        this.x = nextX;
+        this.y = nextY;
     }
 
     draw() {
+        this.setNextPosition();
         let {context, x, y, radius} = this;
 
         context.beginPath();
