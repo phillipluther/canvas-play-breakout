@@ -1,4 +1,4 @@
-export default (ball, paddle, bricks) => {
+export default (ball, paddle, bricks, onClear) => {
     let {
         canvas,
         movingRight: ballMovingRight,
@@ -54,7 +54,12 @@ export default (ball, paddle, bricks) => {
 
             if (withinBrickX && withinBrickY) {
                 brick.cleared = true;
+                bricks.toClear--;
                 ball.movingDown = !ball.movingDown;
+
+                if (onClear) {
+                    onClear(brick);
+                }
             }
         });
     });

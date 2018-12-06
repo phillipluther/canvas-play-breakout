@@ -11,7 +11,7 @@ body {
     overflow: hidden;
 }
 
-#canvas {
+canvas {
     display: block;
     padding: 0;
     margin: auto;

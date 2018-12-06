@@ -4,19 +4,21 @@ export default class Bricks {
         this.context = canvas.getContext('2d');
 
         // spacing around the grid of bricks
-        this.offset = 40;
+        this.offsetX = 40;
+        this.offsetY = 60;
         // spacing between invidual bricks
-        this.brickPad = 5;
+        this.brickPad = 10;
 
-        this.brickHeight = 20;
+        this.brickHeight = 30;
 
+        this.toClear = cols * rows;
         this.layout = this.createLayout(cols, rows);
     }
 
     createLayout(cols, rows) {
-        let {offset, brickPad, brickHeight} = this;
+        let {offsetX, offsetY, brickPad, brickHeight} = this;
 
-        let usableSpace = this.canvas.width - (offset * 2) - (cols * brickPad);
+        let usableSpace = this.canvas.width - (offsetX * 2) - (cols * brickPad);
         let brickWidth = Math.floor(usableSpace / cols);
         let brickLayout = [];
 
@@ -34,8 +36,8 @@ export default class Bricks {
                     width: brickWidth,
                     height: brickHeight,
                     cleared: false,
-                    x: (col * (brickWidth + brickPad)) + offset,
-                    y: (row * (brickHeight + brickPad)) + offset
+                    x: (col * (brickWidth + brickPad)) + offsetX,
+                    y: (row * (brickHeight + brickPad)) + offsetY
                 };
 
                 brickLayout[col][row] = brick;
